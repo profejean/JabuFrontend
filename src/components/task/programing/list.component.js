@@ -110,7 +110,9 @@ export default function TaskListPrograming() {
                             <thead>
                                 <tr>
                                     <th>Title</th>
-                                    <th>Content</th>        
+                                    <th>Content</th>     
+                                    <th>Task Start</th> 
+                                    <th>Task End</th>                                        
                                     <th>Status</th>                          
                                     <th>Actions</th>
                                 </tr>
@@ -122,6 +124,8 @@ export default function TaskListPrograming() {
                                             <tr key={key}>
                                                 <td>{row.title}</td>
                                                 <td>{row.content} </td>
+                                                <td>{row.date} </td>
+                                                <td>{row.end} </td>
                                                 <td>{row.check} </td>
                                                 <td>                                                   
                                                     <Button variant="danger" onClick={()=>deleteTaskPrograming(row.id)}>

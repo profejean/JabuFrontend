@@ -15,6 +15,7 @@ export default function EditTask() {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [type, setType] = useState("")
+  const [end, setEnd] = useState("")
   const [status, setStatus] = useState("")
   const [validationError,setValidationError] = useState({})
 
@@ -24,11 +25,12 @@ export default function EditTask() {
 
   const fetchTask = async () => {
     await axios.get(`http://localhost:8000/api/tasks/${id}`).then(({data})=>{
-      const { title, content, status, type } = data.task
+      const { title, content, status, type, end } = data.task
       setTitle(title)
       setContent(content)
       setStatus(status)
       setType(type)
+      setEnd(end)
     }).catch(({response:{data}})=>{
       Swal.fire({
         text:data.message,
@@ -48,6 +50,7 @@ export default function EditTask() {
     formData.append('content', content)
     formData.append('status', status)
     formData.append('type', type)
+    formData.append('end', end)
 
 
     await axios.post(`http://localhost:8000/api/tasks/${id}`, formData).then(({data})=>{
@@ -149,6 +152,17 @@ export default function EditTask() {
 
                         </Form.Group>
                       </Col>
+                  </Row>
+
+                  <Row> 
+                      <Col>
+                        <Form.Group controlId="End">
+                            <Form.Label>End</Form.Label>
+                            <Form.Control type="date" value={end} onChange={(event)=>{
+                              setEnd(event.target.value)
+                            }}/>
+                        </Form.Group>
+                      </Col>  
                   </Row>
 
                   

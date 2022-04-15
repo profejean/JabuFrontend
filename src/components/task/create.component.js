@@ -13,6 +13,7 @@ export default function CreateTask() {
   const [title, setTitle] = useState("")
   const [content, setContent] = useState("")
   const [type, setType] = useState("")
+  const [end, setEnd] = useState("")
   const [validationError,setValidationError] = useState({})
 
 
@@ -25,6 +26,7 @@ export default function CreateTask() {
     formData.append('title', title)
     formData.append('content', content)
     formData.append('type', type)
+    formData.append('end', end)
 
 
     await axios.post(`http://localhost:8000/api/tasks`, formData).then(({data})=>{
@@ -109,6 +111,16 @@ export default function CreateTask() {
 
                         </Form.Group>
                       </Col>
+                  </Row>
+                  <Row> 
+                      <Col>
+                        <Form.Group controlId="End">
+                            <Form.Label>Finish Task</Form.Label>
+                            <Form.Control type="date" value={end} onChange={(event)=>{
+                              setEnd(event.target.value)
+                            }}/>
+                        </Form.Group>
+                      </Col>  
                   </Row>
               
                   <Button variant="primary" className="mt-2" size="lg" block="block" type="submit">
