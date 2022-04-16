@@ -24,7 +24,7 @@ function App() {
           <div className="row">
             <div className='col-12'>
               <Link to={"/"} className="navbar-brand text-white">
-                Basic Crud App
+                Jabu Test
               </Link> 
           
               <Link className='btn btn-primary mb-2 float-end' to={"/user/list"}>
